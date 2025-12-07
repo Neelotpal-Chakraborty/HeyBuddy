@@ -1688,42 +1688,42 @@
                 "Hi there! Welcome to this safe space. I'm here to listen. What's on your mind?",
                 "Hey! It takes courage to reach out. I'm here for you. How can I support you today?"
             ],
-            anxiety: [
-                "I hear you, and anxiety can feel really overwhelming. 💙 Let's work through this together. Can you tell me what's triggering these anxious feelings?",
-                "Anxiety is tough, but you're not alone. Let's try a grounding technique: Name 5 things you can see around you right now.",
-                "I understand anxiety can be exhausting. Would you like to try a breathing exercise together? It can really help calm your nervous system."
-            ],
-            depression: [
-                "I'm really sorry you're going through this. Depression can make everything feel heavy. 💜 What's been the hardest part lately?",
-                "Thank you for sharing that with me. When we're depressed, our brain tells us lies. But you're not alone right now. I'm here.",
-                "I hear you. Even reaching out like this is a brave step. Would you like to talk about what's been weighing on you?"
-            ],
-            sleep: [
-                "Sleep troubles can really affect how we feel. 🌙 Are you having trouble falling asleep or staying asleep?",
-                "Racing thoughts at night are so frustrating. Try writing down your worries before bed - it helps tell your brain 'I'll deal with these tomorrow.'",
-                "I understand how exhausting poor sleep is. A consistent bedtime routine can really help. Would you like some tips?"
-            ],
-            stress: [
-                "Stress can pile up until it feels unbearable. Let's break it down together. 💪 What's the biggest stressor you're dealing with?",
-                "You're carrying a lot right now. It's okay to set boundaries and say no. What's one thing you could let go of?",
-                "When we're stressed, our body holds tension. Have you tried taking some deep breaths? I can guide you through it."
-            ],
-            crisis: [
-                "I'm really concerned about you and I want you to be safe. 💜 Please consider calling 14416 - they're trained counsellors who can help right now.",
-                "Your pain is real, and you deserve support. Please reach out to the helpline 14416. They're available 24/7 and they care.",
-                "I hear you, and I'm worried. You matter. Please call 14416 to talk to someone who can help you through this."
-            ],
+            // anxiety: [
+            //     "I hear you, and anxiety can feel really overwhelming. 💙 Let's work through this together. Can you tell me what's triggering these anxious feelings?",
+            //     "Anxiety is tough, but you're not alone. Let's try a grounding technique: Name 5 things you can see around you right now.",
+            //     "I understand anxiety can be exhausting. Would you like to try a breathing exercise together? It can really help calm your nervous system."
+            // ],
+            // depression: [
+            //     "I'm really sorry you're going through this. Depression can make everything feel heavy. 💜 What's been the hardest part lately?",
+            //     "Thank you for sharing that with me. When we're depressed, our brain tells us lies. But you're not alone right now. I'm here.",
+            //     "I hear you. Even reaching out like this is a brave step. Would you like to talk about what's been weighing on you?"
+            // ],
+            // sleep: [
+            //     "Sleep troubles can really affect how we feel. 🌙 Are you having trouble falling asleep or staying asleep?",
+            //     "Racing thoughts at night are so frustrating. Try writing down your worries before bed - it helps tell your brain 'I'll deal with these tomorrow.'",
+            //     "I understand how exhausting poor sleep is. A consistent bedtime routine can really help. Would you like some tips?"
+            // ],
+            // stress: [
+            //     "Stress can pile up until it feels unbearable. Let's break it down together. 💪 What's the biggest stressor you're dealing with?",
+            //     "You're carrying a lot right now. It's okay to set boundaries and say no. What's one thing you could let go of?",
+            //     "When we're stressed, our body holds tension. Have you tried taking some deep breaths? I can guide you through it."
+            // ],
+            // crisis: [
+            //     "I'm really concerned about you and I want you to be safe. 💜 Please consider calling 14416 - they're trained counsellors who can help right now.",
+            //     "Your pain is real, and you deserve support. Please reach out to the helpline 14416. They're available 24/7 and they care.",
+            //     "I hear you, and I'm worried. You matter. Please call 14416 to talk to someone who can help you through this."
+            // ],
             // default: [
             //     "I hear you. Tell me more about what you're experiencing. Sometimes just expressing our thoughts helps.",
             //     "Thank you for sharing that with me. How long have you been feeling this way?",
             //     "That sounds challenging. I'm here to listen. What would be most helpful for you right now?",
             //     "I appreciate you opening up. Remember, there's no judgment here. What else is on your mind?"
             // ],
-            positive: [
-                "That's wonderful to hear! 🌟 It's important to acknowledge the good moments too. What's contributing to this positive feeling?",
-                "I'm so happy you're feeling good! What's something that brought you joy today?",
-                "That's great! Celebrating the good days is just as important. Keep nurturing what makes you feel this way! 💜"
-            ]
+            // positive: [
+            //     "That's wonderful to hear! 🌟 It's important to acknowledge the good moments too. What's contributing to this positive feeling?",
+            //     "I'm so happy you're feeling good! What's something that brought you joy today?",
+            //     "That's great! Celebrating the good days is just as important. Keep nurturing what makes you feel this way! 💜"
+            // ]
         };
 
         const keywords = {
@@ -1807,9 +1807,9 @@
                 // When the page is opened directly via file://, a relative path like
                 // '/api/gemini' resolves to file:///api/gemini and fails. Detect file://
                 // and use the local proxy URL (http://localhost:3000) by default.
-                const defaultProxy = 'http://localhost:3000';
+                const defaultProxy = 'https://heybuddy-g8ar.onrender.com';
                 const origin = (window.location.protocol === 'file:') ? defaultProxy : window.location.origin;
-                const endpoint = origin.replace(/\/$/, '') + '/api/gemini';
+                const endpoint = 'https://heybuddy-g8ar.onrender.com/api/gemini';
 
                 const res = await fetch(endpoint, {
                     method: 'POST',
