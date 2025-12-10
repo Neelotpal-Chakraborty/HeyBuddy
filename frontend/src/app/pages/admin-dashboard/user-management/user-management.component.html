@@ -1,0 +1,71 @@
+<div class="user-management-container">
+  <h2>User Management</h2>
+  <button class="create-btn" (click)="showCreateUserForm()">+ Create New User</button>
+
+  <div *ngIf="loading">Loading users...</div>
+
+  <!-- User List -->
+  <table *ngIf="users.length" class="user-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" (click)="selectUser(user)">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button (click)="$event.stopPropagation(); selectUser(user)">Edit</button>
+          <button (click)="$event.stopPropagation(); deleteUser(user.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit User Form -->
+  <div *ngIf="selectedUser" class="edit-form">
+    <h3>Edit User</h3>
+    <form (ngSubmit)="saveUser()">
+      <label>Name: <input [(ngModel)]="selectedUser.name" name="name" required /></label>
+      <label>Email: <input [(ngModel)]="selectedUser.email" name="email" required /></label>
+      <label>Age: <input [(ngModel)]="selectedUser.age" name="age" type="number" /></label>
+      <label>Role:
+        <select [(ngModel)]="selectedUser.role" name="role">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+          <option value="moderator">Moderator</option>
+        </select>
+      </label>
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+
+  <!-- Create User Form -->
+  <div *ngIf="showCreateForm" class="create-form">
+    <h3>Create New User</h3>
+    <form (ngSubmit)="createUser()">
+      <label>Name: <input [(ngModel)]="newUser.name" name="newName" required /></label>
+      <label>Email: <input [(ngModel)]="newUser.email" name="newEmail" required /></label>
+      <label>Password: <input [(ngModel)]="newUser.password" name="newPassword" type="password" required /></label>
+      <label>Age: <input [(ngModel)]="newUser.age" name="newAge" type="number" /></label>
+      <label>Role:
+        <select [(ngModel)]="newUser.role" name="newRole">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+          <option value="moderator">Moderator</option>
+        </select>
+      </label>
+      <div class="error" *ngIf="error">{{ error }}</div>
+      <button type="submit">Create</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>

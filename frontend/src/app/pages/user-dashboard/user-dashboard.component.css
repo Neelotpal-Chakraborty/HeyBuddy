@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0f1729 100%);
+  color: #ffffff;
+}
+.chat-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #071027 0%, #0b1330 60%);
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+  background: rgba(10,14,39,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(90deg,#00ff88,#00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.logout-btn { padding: 8px 14px; background: #ff006e; color: white; border-radius: 8px; text-decoration: none; }
+
+.chat-main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  padding: 28px;
+  flex: 1;
+}
+
+.chat-panel { background: rgba(12,18,36,0.6); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; }
+
+.messages { flex: 1; overflow: auto; padding: 8px; display: flex; flex-direction: column; gap: 12px; }
+.message { max-width: 80%; padding: 12px 14px; border-radius: 12px; }
+.msg-user { align-self: flex-end; background: linear-gradient(90deg,#00ccff,#00ff88); color: #061022; }
+.msg-assistant { align-self: flex-start; background: rgba(255,255,255,0.04); color: #e6eef6; }
+
+.composer { display: flex; gap: 10px; padding-top: 10px; }
+.composer input { flex: 1; padding: 12px; border-radius: 10px; border: none; background: rgba(255,255,255,0.03); color: #fff; }
+.composer button { padding: 10px 14px; border-radius: 10px; border: none; background: linear-gradient(90deg,#00ff88,#00ccff); color: #061022; font-weight:700; }
+
+.side-panel { display: flex; flex-direction: column; gap: 16px; }
+.mood-box { background: rgba(17,22,40,0.6); padding: 16px; border-radius: 10px; }
+.joke-btn { margin-top: 8px; padding: 10px 12px; border-radius: 8px; border: none; background: linear-gradient(90deg,#ffbe0b,#fb5607); color: #061022; font-weight:700; cursor:pointer }
+.joke-display { margin-top: 10px; color: #dfefff; }
+
+.tips { background: rgba(17,22,40,0.4); padding: 12px; border-radius: 10px; color: #cbd5e1; }
+
+@media (max-width: 900px) {
+  .chat-main { grid-template-columns: 1fr; }
+  .side-panel { order: 2; }
+}

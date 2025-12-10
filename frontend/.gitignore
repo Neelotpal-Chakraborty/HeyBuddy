@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+package-lock.json
+yarn.lock
+
+# Angular build output
+dist/
+.angular/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Environment variables
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.js
+*.js.map
+!angular.json
+!tsconfig.json

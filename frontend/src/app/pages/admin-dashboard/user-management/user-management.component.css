@@ -1,0 +1,87 @@
+.user-management-container {
+  background: #181c2f;
+  color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #00ff88, #00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.create-btn {
+  background: linear-gradient(135deg, #00ff88, #00ccff);
+  color: #181c2f;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.create-btn:hover {
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+.user-table th, .user-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #2a2e47;
+}
+.user-table th {
+  background: #23263a;
+  color: #00ff88;
+}
+.user-table tr:hover {
+  background: #23263a;
+  cursor: pointer;
+}
+.edit-form, .create-form {
+  background: #23263a;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+input, select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #00ff88;
+  background: #181c2f;
+  color: #fff;
+  margin-left: 10px;
+}
+button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #00ccff;
+  color: #181c2f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #00ff88;
+}
+.error {
+  color: #ff006e;
+  margin-bottom: 10px;
+}

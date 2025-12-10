@@ -1,0 +1,41 @@
+<div class="chat-page">
+  <header class="chat-header">
+    <div class="brand">HEY<span class="highlight">BUDDY</span></div>
+    <div class="header-actions">
+      <div class="user-name">{{ userName }}</div>
+      <a class="logout-btn" (click)="logout()">Logout</a>
+    </div>
+  </header>
+
+  <main class="chat-main">
+    <section class="chat-panel">
+      <div class="messages">
+        <div *ngFor="let m of messages" [ngClass]="{'msg-user': m.role==='user','msg-assistant': m.role==='assistant'}" class="message">
+          <div class="message-content">{{ m.content }}</div>
+        </div>
+      </div>
+
+      <div class="composer">
+        <input [(ngModel)]="inputMessage" (keydown.enter)="sendMessage()" placeholder="How are you feeling? Say anything..." />
+        <button (click)="sendMessage()" [disabled]="loading">{{ loading ? 'Sending...' : 'Send' }}</button>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <div class="mood-box">
+        <h3>Breathe & Smile</h3>
+        <p>Feeling low? Try a quick joke to lift your mood.</p>
+        <button class="joke-btn" (click)="fetchJoke()">Surprise Me</button>
+        <div *ngIf="jokeText" class="joke-display">{{ jokeText }}</div>
+      </div>
+      <div class="tips">
+        <h4>Quick Tips</h4>
+        <ul>
+          <li>Take deep breaths</li>
+          <li>Try to describe how you feel</li>
+          <li>Reach out to someone you trust</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+</div>

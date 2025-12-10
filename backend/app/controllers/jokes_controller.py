@@ -7,3 +7,7 @@ router = APIRouter()
 @router.get("/daily")
 def get_daily_joke(user=Depends(validate_access_token)):
     return JokesService.get_daily_joke()
+
+@router.get("/random")
+async def get_random_joke(user=Depends(validate_access_token)):
+    return await JokesService.get_random_joke()

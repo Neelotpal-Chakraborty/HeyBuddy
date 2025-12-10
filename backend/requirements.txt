@@ -1,5 +1,19 @@
 fastapi
 uvicorn
+PyJWT
 python-jose
 python-dotenv
-jwt
+sqlalchemy
+psycopg2-binary
+alembic
+bcrypt
+pydantic
+email-validator
+httpx
+
+# LLM / OpenAI integration
+openai
+
+# dotenv for environment variables (ensure installed in venv)
+python-dotenv
+
