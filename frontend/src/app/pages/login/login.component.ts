@@ -42,6 +42,20 @@ export class LoginComponent {
         if (response.access_token) {
           const role = response.user.role || 'user';
           this.authService.setToken(response.access_token, role);
+          
+          // store user id and name for client-side operations like diary
+          try {
+            if (response.user) {
+              if (response.user.id) {
+                localStorage.setItem('user_id', String(response.user.id));
+              }
+              if (response.user.name) {
+                this.authService.setName(response.user.name);
+              }
+            }
+          } catch (err) {
+            console.warn('Could not persist user info', err);
+          }
 
           // Redirect based on role
           if (role === 'admin') {

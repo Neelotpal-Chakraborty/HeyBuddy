@@ -6,7 +6,13 @@
 
 html, body {
   height: 100%;
-  background: #0a0e27;
-  color: #ffffff;
+  --bg: #041022; /* very dark navy */
+  --panel: rgba(10,14,30,0.6);
+  --accent: #6ec8ff; /* electric cyan */
+  --accent-2: #7fffd4; /* mint */
+  --muted: #9bb9c9;
+  --text: #e6f7ff;
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

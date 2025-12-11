@@ -2,6 +2,9 @@ from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from app.models import UserRole
 from datetime import datetime
+from datetime import date
+from pydantic import Field
+from typing import List
 
 
 class UserBase(BaseModel):
@@ -50,3 +53,31 @@ class PasswordChangeRequest(BaseModel):
     """Schema for password change request"""
     old_password: str = Field(..., min_length=8, description="Current password")
     new_password: str = Field(..., min_length=8, description="New password")
+
+
+class DiaryBase(BaseModel):
+    """Base schema for diary entries"""
+    user_id: int
+    date: date
+
+
+class DiaryCreate(DiaryBase):
+    content: str
+
+
+class DiaryUpdate(BaseModel):
+    content: Optional[str] = None
+
+
+class DiaryResponse(DiaryBase):
+    id: int
+    content: str
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class DiaryDatesResponse(BaseModel):
+    dates: List[date]

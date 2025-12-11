@@ -27,6 +27,14 @@ export class AuthService {
     localStorage.setItem('role', role);
   }
 
+  setName(name: string): void {
+    localStorage.setItem('user_name', name);
+  }
+
+  getName(): string | null {
+    return localStorage.getItem('user_name');
+  }
+
   getRole(): string | null {
     return localStorage.getItem('role');
   }
@@ -34,6 +42,8 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('role');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_id');
   }
 
   isAuthenticated(): boolean {

@@ -1,0 +1,12 @@
+<div class="chat-diary-root">
+  <div class="messages">
+    <div *ngFor="let m of messages" [ngClass]="{'msg-user': m.role==='user','msg-assistant': m.role==='assistant'}" class="message">
+      {{ m.content }}
+    </div>
+  </div>
+
+  <div class="composer">
+    <input [(ngModel)]="inputMessage" (keydown.enter)="send()" placeholder="Ask about your diary..." />
+    <button (click)="send()" [disabled]="loading">{{ loading ? 'Thinking...' : 'Ask' }}</button>
+  </div>
+</div>

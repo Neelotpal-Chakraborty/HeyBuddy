@@ -5,25 +5,37 @@
 }
 
 .dashboard-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0f1729 100%);
-  color: #ffffff;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #070915 0%, #0b1330 50%, #061024 100%);
+  color: #e6f7ff;
+  display:flex;
+  flex-direction:column;
 }
-.chat-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(135deg, #071027 0%, #0b1330 60%);
-}
+.dashboard-layout { display:flex; gap:20px; height: calc(100vh - 72px); padding: 20px; }
 
-.chat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 28px;
-  background: rgba(10,14,39,0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
+.left-panel { width: 260px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius: 12px; display:flex; align-items:stretch; }
+.panel-inner { padding: 18px; display:flex; flex-direction:column; height:100%; }
+.brand { display:flex; align-items:center; gap:12px; margin-bottom:18px }
+.logo { width:44px; height:44px; border-radius:8px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+.brand-text { font-size:1.1rem; font-weight:800; color:var(--text) }
+.highlight { background: linear-gradient(90deg,var(--accent-2),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent }
+.user-actions { display:flex; flex-direction:column; gap:12px; margin-top:8px }
+.dash-btn { display:block; padding:12px 14px; border-radius:10px; text-decoration:none; background: transparent; color:var(--muted); font-weight:700; text-align:left; cursor:pointer; border-left:3px solid transparent }
+.dash-btn:hover { transform: translateX(6px); transition: transform 0.14s; color:var(--text); }
+.dash-btn.active { background: linear-gradient(90deg,var(--accent-2),var(--accent)); color:#041022; border-left-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.6) }
+.logout-wrap { margin-top:auto }
+.logout-btn { display:inline-block; padding:10px 14px; background:#ff3b7a; color:white; border-radius:8px; text-decoration:none }
+
+.right-panel { flex:1; min-height:0; /* allow flex children to control overflow */ }
+.right-inner { background: linear-gradient(180deg, rgba(10,14,39,0.6), rgba(6,10,30,0.6)); border-radius:12px; padding:18px; height:100%; overflow:auto }
+
+/* Ensure child components don't cause horizontal scroll */
+textarea, input, .right-inner { max-width:100%; box-sizing:border-box }
+
+.chat-header { display:flex; justify-content:space-between; align-items:center; padding: 12px 20px; background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-bottom: 1px solid rgba(255,255,255,0.03); height:64px }
+.chat-header .brand { font-size:1.2rem }
+.chat-header .user-info { color: #9be7ff; font-weight:600; margin-right:10px }
 
 .brand {
   font-size: 1.6rem;

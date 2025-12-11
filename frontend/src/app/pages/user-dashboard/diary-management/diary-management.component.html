@@ -1,0 +1,17 @@
+<div class="diary-root">
+  <div class="diary-sidebar">
+    <h3>Your Entries</h3>
+    <ul>
+      <li *ngFor="let d of dates" (click)="selectDate(d)" [class.selected]="d===selectedDate">{{ d }}</li>
+    </ul>
+    <button (click)="selectToday()">New Today</button>
+  </div>
+
+  <div class="diary-editor">
+    <div class="editor-header">
+      <input type="date" [(ngModel)]="selectedDate" (change)="loadEntryForDate()" />
+      <button (click)="saveEntry()">{{ entryId ? 'Update' : 'Save' }}</button>
+    </div>
+    <textarea [(ngModel)]="content" rows="12" placeholder="Write your thoughts..."></textarea>
+  </div>
+</div>
