@@ -14,6 +14,8 @@ httpx
 # LLM / OpenAI integration
 openai
 
+# Local embeddings (no quota limits)
+sentence-transformers
+
 # dotenv for environment variables (ensure installed in venv)
 python-dotenv
-

@@ -4,21 +4,28 @@ from typing import List, Tuple
 from app.models import Diary, DiaryVector
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-import openai
+from openai import OpenAI
 import os
 
+# Load sentence-transformers model for local embeddings (no API quota limits)
+try:
+    from sentence_transformers import SentenceTransformer
+    embedder = SentenceTransformer('all-MiniLM-L6-v2')
+    USE_LOCAL_EMBEDDINGS = True
+except ImportError:
+    embedder = None
+    USE_LOCAL_EMBEDDINGS = False
+
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-if OPENAI_API_KEY:
-    openai.api_key = OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
 
 def embed_text(text: str) -> List[float]:
-    if not OPENAI_API_KEY:
-        raise HTTPException(status_code=500, detail='OpenAI API key not configured')
+    if not USE_LOCAL_EMBEDDINGS or not embedder:
+        raise HTTPException(status_code=500, detail='Embedding service not available. Install sentence-transformers: pip install sentence-transformers')
     try:
-        res = openai.Embedding.create(model='text-embedding-3-small', input=text)
-        emb = res['data'][0]['embedding']
-        return emb
+        emb = embedder.encode(text, convert_to_tensor=False)
+        return emb.tolist() if hasattr(emb, 'tolist') else list(emb)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f'Embedding error: {str(e)}')
 
@@ -105,15 +112,17 @@ class RAGService:
         )
 
         try:
-            # use chat completions
-            resp = openai.ChatCompletion.create(
+            # use chat completions (OpenAI API for LLM response)
+            if not client:
+                raise HTTPException(status_code=500, detail='OpenAI API key not configured for LLM responses')
+            resp = client.chat.completions.create(
                 model='gpt-3.5-turbo',
                 messages=[{'role': 'system', 'content': system},
                           {'role': 'user', 'content': prompt}],
                 max_tokens=512,
                 temperature=0.2,
             )
-            answer = resp['choices'][0]['message']['content']
+            answer = resp.choices[0].message.content
         except Exception as e:
             raise HTTPException(status_code=500, detail=f'LLM error: {str(e)}')
 
